@@ -1,0 +1,19 @@
+* rsyslog
+#+begin_verse
+修改 /etc/rsyslog.conf, 打开 udp 514端口
+在 /etc/rsyslog.d/local7.conf中保存如下
+#+end_verse
+#+begin_src ini
+  template(name="local7Tpl" type="list"){
+    property(name="hostname")
+    property(name="msg" spifno1stsp="on")
+    property(name="msg" droplastlf="on")
+    constant(value="\n")
+  }
+
+  template (name="info" type="string" string="/tmp/logs/%programname%/info.log")
+  template (name="error" type="string" string="/tmp/logs/%programname%/error.log")
+
+  local7.=info;local7.=notice;local7.=warning action(type="omfile" dynaFile="info" template="local7Tpl")
+  local7.=error;local7.=crit;local7.=alert;local7.=emerg action(type="omfile" dynaFile="error" template="local7Tpl")
+#+end_src
