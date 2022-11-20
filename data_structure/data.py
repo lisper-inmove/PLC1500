@@ -1,17 +1,8 @@
-class Category:
-
-    @property
-    def datas(self):
-        return self._datas
-
-    def __init__(self, name):
-        self._name = name
-        self._datas = []
-
-    def add_data(self, data):
-        self._datas.append(data)
-
 class Data:
+
+    INT = "INT"
+    UINT = "UINT"
+    USINT = "USINT"
 
     @property
     def name(self):
@@ -45,11 +36,28 @@ class Data:
     def word_bit_offset(self):
         return self._word_bit_offset
 
-    def __init__(self, name, datatype, raw_address, comment):
+    @property
+    def row_idx(self):
+        return self._row_idx
+
+    @row_idx.setter
+    def row_idx(self, row_idx):
+        self._row_idx = row_idx
+
+    def __init__(
+            self,
+            name: str,
+            datatype: str,
+            raw_address: str,
+            category_name: str,
+            comment: str = None,
+    ):
         self._name = name
         self._datatype = datatype
         self._raw_address = raw_address
         self._comment = comment
+        self._category_name = category_name
+        self._row_idx = None
         self.__parse_raw_address()
 
     def __parse_raw_address(self):
@@ -63,6 +71,7 @@ class Data:
 
     def __str__(self):
         msg = f"""
+        文件中的行数: {self.row_idx}
         名称: {self.name}
         数据类型: {self.datatype}
         PLC地址: {self.raw_address}
@@ -70,6 +79,5 @@ class Data:
         数据库索引: {self.db_idx}
         字类型: {self.word_tpe}
         数据偏移量: {self.word_tpe_offset}
-        位偏移量(只有boolean数据才会有值): {self.word_bit_offset}
-        """
+        位偏移量(只有boolean数据才会有值): {self.word_bit_offset}"""
         return msg
