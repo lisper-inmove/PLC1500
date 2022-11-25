@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import argparse
 import random
 
@@ -73,44 +75,15 @@ class Main:
         return value
 
 
-class Simulation(Main):
-
-    def generate_data(self):
-        for db_idx, db in self._parser._dbs.items():
-            self.create_plc_utils(db)
-            for data in db.datas:
-                if data.datatype == Data.INT:
-                    self.write_int(data)
-                elif data.datatype == Data.USINT:
-                    self.write_usint(data)
-
-    def write_int(self, data):
-        plc_util = self._plc_utils.get(data.db_idx)
-        value = random.randint(10, 20)
-        plc_util.write_int(data.word_tpe_offset, value)
-        logger.info(f"write {data} to {data.db_idx} {value}")
-
-    def write_usint(self, data):
-        pass
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--filename", dest="filename", help="文件名")
     parser.add_argument("--host", dest="host", help="主机ip地址")
     parser.add_argument("--port", dest="port", help="端口", default=102, type=int)
-    parser.add_argument("-s", "--simulation", dest="simulation", help="模拟数据", action="store_true")
 
     args = parser.parse_args()
-    if args.simulation:
-        obj = Simulation(
-            filename=args.filename,
-            plc_address=(args.host, args.port)
-        )
-        obj.generate_data()
-    else:
-        obj = Main(
-            filename=args.filename,
-            plc_address=(args.host, args.port)
-        )
-        obj.read_data()
+    obj = Main(
+        filename=args.filename,
+        plc_address=(args.host, args.port)
+    )
+    obj.read_data()

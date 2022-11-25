@@ -14,7 +14,7 @@ from data_structure.db import DB
 class ParseXlsx:
     """解析xlsx数据类."""
 
-    datapath = f"{os.path.realpath(os.path.dirname(__file__))}/data"
+    datapath = f"{os.path.realpath(os.path.dirname(__file__))}/SourceData"
 
     def __init__(self, filename):
         """解析xlsx数据初始化函数.

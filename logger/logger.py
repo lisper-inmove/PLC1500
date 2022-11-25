@@ -69,7 +69,7 @@ class Logger(logging.Logger):
     def __init_syslog_handler(self):
         """设置syslog日志."""
         enable = SysEnv.get_env(SysEnv.LOGGER_ENABLE_SYSLOG)
-        if enable is None or enable == "false":
+        if enable is None or not enable:
             return
         host = SysEnv.get_env(SysEnv.LOGGER_SYSLOG_HOST)
         port = int(SysEnv.get_env(SysEnv.LOGGER_SYSLOG_PORT))
@@ -88,8 +88,8 @@ class Logger(logging.Logger):
 
     def __init_console_handler(self):
         """设置终端日志."""
-        enable = SysEnv.get_env(SysEnv.LOGGER_ENABLE_CONSOLE)
-        if enable is None or enable == "false":
+        enable = SysEnv.get_env(SysEnv.LOGGER_ENABLE_CONSOLE, default=True)
+        if enable is None or not enable:
             return
         handler = logging.StreamHandler()
         handler.setFormatter(self._formatter)
@@ -98,7 +98,7 @@ class Logger(logging.Logger):
     def __init_file_handler(self):
         """设置文件日志."""
         enable = SysEnv.get_env(SysEnv.LOGGER_ENABLE_FILE)
-        if enable is None or enable == "false":
+        if enable is None or not enable:
             return
         directory = SysEnv.get_env(SysEnv.LOGGER_FILE_DIRECTORY)
         FileUtil.create_dir_if_not_exists(directory)

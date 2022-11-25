@@ -9,3 +9,6 @@ export LOGGER_SYSLOG_FACILITY=local7
 export LOGGER_ENABLE_FILE=false
 export LOGGER_FILE_DIRECTORY=/tmp/logs
 export LOGGER_LEVEL=INFO
+export ROOT_PATH=`pwd`
+export PYTHONPATH=$ROOT_PATH
+export DEBUG=true
