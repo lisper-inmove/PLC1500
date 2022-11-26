@@ -5,8 +5,7 @@
   "title": "",
   "values": [
     {
-      "status": "RUNNING",
-      "statusName": "运行中",
+      "status": "运行中",
       "statusColor": "#aabbcc",
       "name": "发动机拆解专机",
       "imageUrl": ""
