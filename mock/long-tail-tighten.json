@@ -2,7 +2,7 @@
   "format": "v1",
   "column_number": 3,
   "device_image_url": "",
-  "columns": [
+  "values": [
     {
       "en_value": "RUNNING",
       "zh_value": "运行中",
