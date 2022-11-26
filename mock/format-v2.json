@@ -1,0 +1,15 @@
+{
+  "format": "v2",
+  "column_number": 5,
+  "background_image_url": "",
+  "title": "",
+  "values": [
+    {
+      "status": "RUNNING",
+      "statusName": "运行中",
+      "statusColor": "#aabbcc",
+      "name": "发动机拆解专机",
+      "imageUrl": ""
+    }
+  ]
+}

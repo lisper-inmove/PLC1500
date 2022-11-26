@@ -11,6 +11,7 @@ from view.special import depth_test_bp
 from view.special import engine_dismantle_bp
 from view.special import firebox_tighten_bp
 from view.special import long_tail_tighten_bp
+from view.special import machine_summary_bp
 
 
 class InitBlueprint:
@@ -23,7 +24,7 @@ class InitBlueprint:
             engine_dismantle_bp,                             # 发动拆解
             firebox_tighten_bp,                              # 燃烧室拧紧专机
             long_tail_tighten_bp,                            # 长尾喷管拧紧专机
-
+            machine_summary_bp,                              # 机器汇总页
         ]
         logger = Logger()
         for bp in bps:
