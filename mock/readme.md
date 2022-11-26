@@ -21,6 +21,7 @@
     column_number: 同format-v1
     values: 同format-v1
         status: 状态
-        statusColor: 状态图标颜色
+        status_color: 状态图标颜色
         name: 设备名称
-        imageUrl: 设备展示图
+        image_url: 设备展示图
+        detail_page_url: 详情页地址

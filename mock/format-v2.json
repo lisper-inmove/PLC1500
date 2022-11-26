@@ -6,9 +6,10 @@
   "values": [
     {
       "status": "运行中",
-      "statusColor": "#aabbcc",
+      "status_color": "#aabbcc",
       "name": "发动机拆解专机",
-      "imageUrl": ""
+      "image_url": "",
+      "detail_page_url": ""
     }
   ]
 }
