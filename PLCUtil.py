@@ -56,14 +56,18 @@ class PLCUtil:
         value = snap7.util.get_string(self.buf, start)
         return value
 
+    def read_string_array(self, start: int, length: int):
+        result = []
+        while length:
+            value = snap7.util.get_string(self.buf, start)
+            length -= 1
+            result.append(value)
+        return result
+
     def write_string(self, start: int, value: str):
         data = bytearray(len(value) + 20)
         snap7.util.set_string(data, len(value) + 10, value)
         self.client.db_write(self.db_idx, start, data)
-
-    def read_boolean(self, start: int, bit_offset: int):
-        value = snap7.util.get_bool(self.buf, start, bit_offset)
-        return value
 
 
 if __name__ == '__main__':
@@ -71,7 +75,6 @@ if __name__ == '__main__':
     # obj.load_bytes(264)
     # print(obj.read_int(4))
     # print(obj.read_string(6))
-    # print(obj.read_boolean(262, 1))
 
     size = 2840
     obj1 = PLCUtil("192.168.0.77", size=size, db_idx=10)

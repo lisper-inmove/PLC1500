@@ -40,7 +40,7 @@ class ParseXlsx:
 
     def __read_data(self):
         for row_idx, row in enumerate(self.ws.iter_rows()):
-            if row_idx in [0, 1, 2, 3]: # 忽略头部几行
+            if row_idx in [0, 1, 2]: # 忽略头部几行
                 continue
             self.__parse_row(row_idx, row)
 

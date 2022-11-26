@@ -3,7 +3,7 @@
 import argparse
 import random
 
-from parse_xlsx import ParseXlsx
+from GetData.parse_xlsx import ParseXlsx
 from PLCUtil import PLCUtil
 from data_structure.data import Data
 from logger import Logger
@@ -23,10 +23,17 @@ class Main:
         for db_idx, db in self._parser._dbs.items():
             self.__load_db_datas(db)
             for data in db.datas:
-                if data.datatype == Data.INT:
+                datatype = data.datatype.upper()
+                if datatype == Data.INT:
                     self.read_int(data)
-                elif data.datatype == Data.USINT:
+                elif datatype == Data.USINT:
                     self.read_usint(data)
+                elif datatype == Data.REAL:
+                    self.read_real(data)
+                elif datatype == Data.BOOL:
+                    self.read_bool(data)
+                elif datatype == Data.STRING_ARRAY:
+                    self.read_string(data)
 
     def __load_db_datas(self, db):
         db_datas = self._db_datas.get(db.idx)
@@ -71,7 +78,12 @@ class Main:
 
     def read_string(self, data):
         plc_util = self._plc_utils.get(data.db_idx)
-        value = plc_util.read_string(data.word_tpe_offset, data.word_tpe_offset)
+        value = plc_util.read_string(data.word_tpe_offset)
+        return value
+
+    def read_string_array(self, data):
+        plc_util = self._plc_utils.get(data.db_idx)
+        value = plc_util.read_string_array(data.word_tpe_offset, data.string_array_length)
         return value
 
 

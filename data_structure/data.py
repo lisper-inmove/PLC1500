@@ -1,8 +1,15 @@
+import re
+
 class Data:
 
     INT = "INT"
     UINT = "UINT"
     USINT = "USINT"
+    REAL = "REAL"
+    BOOL = "BOOL"
+    STRING_ARRAY = "STRING_ARRAY"
+
+    string_array_pattern = re.compile(r"String\[(.*)\]")
 
     @property
     def name(self):
@@ -40,6 +47,10 @@ class Data:
     def row_idx(self):
         return self._row_idx
 
+    @property
+    def string_array_length(self):
+        return self._string_array_length
+
     @row_idx.setter
     def row_idx(self, row_idx):
         self._row_idx = row_idx
@@ -53,12 +64,20 @@ class Data:
             comment: str = None,
     ):
         self._name = name
-        self._datatype = datatype
+        self._datatype = datatype.upper()
         self._raw_address = raw_address
         self._comment = comment
         self._category_name = category_name
         self._row_idx = None
         self.__parse_raw_address()
+        self._string_array_length = None
+
+    def __parse_string_array_datatype(self):
+        match = self.string_array_pattern.match(self._datatype)
+        if not match:
+            return
+        self._string_array_length = len(match.groups()[0])
+        self._datatype = self.STRING_ARRAY
 
     def __parse_raw_address(self):
         address = self.raw_address.split(".")
