@@ -2,65 +2,55 @@
   "format": "v1",
   "column_number": 3,
   "device_image_url": "",
+  "name": "设备名称",
+  "title": "页面标题",
   "values": [
     {
-      "en_value": "RUNNING",
-      "zh_value": "运行中",
+      "value": "运行中",
       "name": "运行状态"
     },
     {
-      "en_value": true,
-      "zh_value": "有",
+      "value": "有",
       "name": "有无产品"
     },
     {
-      "en_value": 123,
-      "zh_value": 123,
+      "value": 123,
       "name": "心跳计数"
     },
     {
-      "en_value": 14,
-      "zh_value": 14,
+      "value": 14,
       "name": "第一段电机杻矩"
     },
     {
-      "en_value": 58,
-      "zh_value": 58,
+      "value": 58,
       "name": "第二段电机杻矩"
     },
     {
-      "en_value": 22,
-      "zh_value": 22,
+      "value": 22,
       "name": "第三段电机杻矩"
     },
     {
-      "en_value": "FINISHED",
-      "zh_value": "已完成",
+      "value": "已完成",
       "name": "产品测试状态"
     },
     {
-      "en_value": "0666",
-      "zh_value": "0666",
+      "value": "0666",
       "name": "产品编号"
     },
     {
-      "en_value": "0077",
-      "zh_value": "0077",
+      "value": "0077",
       "name": "产品型号"
     },
     {
-      "en_value": "START",
-      "zh_value": "工作开始",
+      "value": "工作开始",
       "name": "工作状态"
     },
     {
-      "en_value": true,
-      "zh_value": true,
+      "value": true,
       "name": "拧紧结果"
     },
     {
-      "en_value": "WARNING",
-      "zh_value": "报警中",
+      "value": "报警中",
       "name": "报警信息"
     }
   ]
