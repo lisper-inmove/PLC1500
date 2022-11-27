@@ -34,6 +34,8 @@ class Main:
                     self.read_bool(data)
                 elif datatype == Data.STRING_ARRAY:
                     self.read_string(data)
+                elif datatype == Data.UINT:
+                    self.read_uint(data)
 
     def __load_db_datas(self, db):
         db_datas = self._db_datas.get(db.idx)
@@ -84,6 +86,11 @@ class Main:
     def read_string_array(self, data):
         plc_util = self._plc_utils.get(data.db_idx)
         value = plc_util.read_string_array(data.word_tpe_offset, data.string_array_length)
+        return value
+
+    def read_uint(self, data):
+        plc_util = self._plc_utils.get(data.db_idx)
+        value = plc_util.read_uint(data.word_tpe_offset)
         return value
 
 

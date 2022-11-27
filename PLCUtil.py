@@ -44,6 +44,10 @@ class PLCUtil:
         value = snap7.util.get_udint(self.buf, start)
         return value
 
+    def read_uint(self, start: int):
+        value = snap7.util.get_uint(self.buf, start)
+        return value
+
     def read_real(self, start: int):
         value = snap7.util.get_real(self.buf, start)
         return value
