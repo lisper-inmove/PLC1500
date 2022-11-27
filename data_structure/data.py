@@ -51,6 +51,10 @@ class Data:
     def string_array_length(self):
         return self._string_array_length
 
+    @property
+    def is_display(self):
+        return self._is_display
+
     @row_idx.setter
     def row_idx(self, row_idx):
         self._row_idx = row_idx
@@ -62,7 +66,11 @@ class Data:
             raw_address: str,
             category_name: str,
             comment: str = None,
+            is_display: bool = None
     ):
+        if is_display is None:
+            is_display = False
+        self._is_display = is_display
         self._name = name
         self._datatype = datatype.upper()
         self._raw_address = raw_address
@@ -98,5 +106,7 @@ class Data:
         数据库索引: {self.db_idx}
         字类型: {self.word_tpe}
         数据偏移量: {self.word_tpe_offset}
-        位偏移量(只有boolean数据才会有值): {self.word_bit_offset}"""
+        位偏移量(只有boolean数据才会有值): {self.word_bit_offset}
+        是否展示: {self.is_display}
+        """
         return msg

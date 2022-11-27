@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import argparse
-import random
 
 from GetData.parse_xlsx import ParseXlsx
 from PLCUtil import PLCUtil
