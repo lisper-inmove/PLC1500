@@ -2,14 +2,43 @@
   "format": "v2",
   "column_number": 5,
   "background_image_url": "",
-  "title": "",
+  "title": "设备运行状态实时监控",
   "values": [
     {
       "status": "运行中",
       "status_color": "#aabbcc",
       "name": "发动机拆解专机",
       "image_url": "",
-      "detail_page_url": ""
+      "detail_page_url": "http://127.0.0.1:1337/engine-dismantle/get"
+  },
+    {
+      "status": "运行中",
+      "status_color": "#aabbcc",
+      "name": "长尾喷管拧紧专机",
+      "image_url": "",
+      "detail_page_url": "http://127.0.0.1:1337/long-tail-tighten/get"
+  },
+    {
+      "status": "运行中",
+      "status_color": "#aabbcc",
+      "name": "燃烧室拧紧专机",
+      "image_url": "",
+      "detail_page_url": "http://127.0.0.1:1337/firebox-tighten/get"
+  },
+    {
+      "status": "运行中",
+      "status_color": "#aabbcc",
+      "name": "深度测试专机",
+      "image_url": "",
+      "detail_page_url": "http://127.0.0.1:1337/depth-test/get"
+  },
+    {
+      "status": "运行中",
+      "status_color": "#aabbcc",
+      "name": "自动装药专机",
+      "image_url": "",
+      "detail_page_url": "http://127.0.0.1:1337/auto-fill-ammo/get"
     }
+
   ]
 }
