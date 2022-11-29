@@ -15,7 +15,7 @@ machine_summary_bp = Blueprint(
 )
 
 
-@machine_summary_bp.route("/get")
+@machine_summary_bp.route("/get", methods=["POST"])
 async def get_(request):
     """机器汇总页."""
     with open("mock/format-v2.json", "r") as f:
